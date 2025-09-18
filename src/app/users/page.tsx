@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useFetch } from "@/hooks/useFetch";
 import { User } from "@/types/users";
-
+import Modal from "@/components/Modal";
 
 export default function UsersPage() {
   const { data: users, loading, error } = useFetch<User[]>(
@@ -18,6 +18,7 @@ export default function UsersPage() {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Users</h1>
+
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
@@ -43,16 +44,13 @@ export default function UsersPage() {
         </table>
       </div>
 
-      {/* Modal */}
-      {selectedUser && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-          onClick={() => setSelectedUser(null)}
-        >
-          <div
-            className="bg-white p-6 rounded shadow-lg max-w-md w-full"
-            onClick={(e) => e.stopPropagation()}
-          >
+      {/* Using reusable Modal component */}
+      <Modal
+        isOpen={!!selectedUser}
+        onClose={() => setSelectedUser(null)}
+      >
+        {selectedUser && (
+          <>
             <h2 className="text-xl font-bold mb-2">{selectedUser.name}</h2>
             <p><strong>Username:</strong> {selectedUser.username}</p>
             <p><strong>Email:</strong> {selectedUser.email}</p>
@@ -81,9 +79,9 @@ export default function UsersPage() {
             >
               Close
             </button>
-          </div>
-        </div>
-      )}
+          </>
+        )}
+      </Modal>
     </div>
   );
 }

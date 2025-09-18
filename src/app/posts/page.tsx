@@ -1,9 +1,11 @@
 "use client";
 
+import Card from "@/components/Card";
 import { useFetch } from "@/hooks/useFetch";
-import { Post } from "@/types/posts";
-import Link from "next/link";
 
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Post } from "@/types/posts";
 
 export default function PostsPage() {
   const { data: posts, loading, error } = useFetch<Post[]>(
@@ -12,21 +14,34 @@ export default function PostsPage() {
 
   if (loading) return <p>Loading posts...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
+  if (!posts) return <p>No posts found</p>;
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Posts</h1>
-      <div className="grid gap-4">
-        {posts?.slice(0, 10).map((post) => (
-          <div key={post.id} className="border p-4 rounded bg-gray-100">
-            <h2 className="font-semibold">{post.title}</h2>
-            <p className="text-sm text-gray-600">{post.body}</p>
-            <Link href={`/posts/${post.id}`} className="text-blue-500">
+      <h1 className="text-2xl font-bold mb-6">All Posts</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {posts.map((post, index) => (
+          <motion.div
+            key={post.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05 }}
+          >
+            <Link href={`/posts/${post.id}`}>
+              <Card title={post.title}>
+                <p>{post.body.slice(0, 80)}...</p>
+                   <Link href={`/posts/${post.id}`} className="text-blue-500">
               Read more →
             </Link>
-          </div>
+              </Card>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>
   );
 }
+
+         
+      

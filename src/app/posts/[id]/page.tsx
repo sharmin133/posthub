@@ -1,18 +1,15 @@
 "use client";
 
 import { useFetch } from "@/hooks/useFetch";
+
+import { useParams } from "next/navigation";
+import Card from "@/components/Card";
 import { Post } from "@/types/posts";
 
-
-interface PostPageProps {
-  params: { id: string };
-}
-
-export default function PostDetailsPage({ params }: PostPageProps) {
-  const { id } = params;
-
+export default function PostDetails() {
+  const params = useParams();
   const { data: post, loading, error } = useFetch<Post>(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
+    `https://jsonplaceholder.typicode.com/posts/${params.id}`
   );
 
   if (loading) return <p>Loading post...</p>;
@@ -21,8 +18,11 @@ export default function PostDetailsPage({ params }: PostPageProps) {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
-      <p className="text-gray-700">{post.body}</p>
+      <h1 className="text-2xl font-bold mb-4">Post Details</h1>
+      <Card title={post.title}>
+        <p>{post.body}</p>
+
+      </Card>
     </div>
   );
 }
