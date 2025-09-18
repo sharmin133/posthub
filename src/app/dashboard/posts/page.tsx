@@ -17,28 +17,26 @@ export default function PostsPage() {
   if (!posts) return <p>No posts found</p>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 md:pt-28">
       <h1 className="text-2xl font-bold mb-6">All Posts</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {posts.map((post, index) => (
-          <motion.div
-            key={post.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05 }}
-          >
-            <Link href={`/posts/${post.id}`}>
-              <Card title={post.title}>
-                <p>{post.body.slice(0, 80)}...</p>
-                   <Link href={`/posts/${post.id}`} className="text-blue-500">
-              Read more →
-            </Link>
-              </Card>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
+  {posts.map((post, index) => (
+    <motion.div
+      key={post.id}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.05 }}
+    >
+      <Card title={post.title}>
+        <p>{post.body.slice(0, 80)}...</p>
+        <Link href={`/dashboard/posts/${post.id}`} className="text-blue-500">
+  Read more →
+</Link>
+      </Card>
+    </motion.div>
+  ))}
+</div>
     </div>
   );
 }

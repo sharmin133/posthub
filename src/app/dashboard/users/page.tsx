@@ -16,7 +16,7 @@ export default function UsersPage() {
   if (!users) return <p>No users found</p>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 md:pt-28">
       <h1 className="text-2xl font-bold mb-4">Users</h1>
 
       <div className="overflow-x-auto">
