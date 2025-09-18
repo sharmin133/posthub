@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import Link from "next/link";
@@ -32,21 +30,23 @@ export default function Sidebar({
         initial={{ width: 60 }}
         animate={{ width: isOpen ? 220 : 60 }}
         transition={{ duration: 0.3 }}
-        className="hidden md:flex bg-white shadow-lg h-screen p-4 flex-col fixed top-0 left-0 z-50 mt-20"
+        className="hidden md:flex bg-purple-100 text-orange-600 shadow-lg h-screen p-4 flex-col fixed top-0 left-0 z-50 mt-20"
       >
+        {/* Toggle Button */}
         <button
-          className="mb-8 bg-gray-200 rounded p-1 text-gray-700 hover:bg-gray-300"
+          className="mb-8 bg-purple-400 rounded p-1 text-white hover:bg-purple-900 transition"
           onClick={toggleSidebar}
         >
           {isOpen ? "←" : "→"}
         </button>
 
+        {/* Sidebar Links */}
         <ul className="flex flex-col gap-4">
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-blue-600 font-medium whitespace-nowrap"
+                className="font-medium whitespace-nowrap hover:text-purple-900 transition"
               >
                 {isOpen ? link.name : link.name[0]}
               </Link>
@@ -58,7 +58,7 @@ export default function Sidebar({
       {/* Mobile Top-left Menu Icon */}
       <div className="fixed top-24 left-4 md:hidden z-50">
         <button
-          className="w-12 h-12 text-blue-600 bg-white shadow rounded flex items-center justify-center hover:bg-gray-100"
+          className="w-12 h-12 text-purple-700 bg-purple-200 shadow rounded flex items-center justify-center hover:bg-purple-300 transition"
           onClick={toggleMobile}
           title="Menu"
         >
@@ -74,21 +74,23 @@ export default function Sidebar({
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 z-50 bg-white p-6 flex flex-col md:hidden shadow-lg"
+            className="fixed inset-x-0 z-50 bg-purple-100 text-orange-600 flex flex-col md:hidden shadow-lg"
           >
+            {/* Close Button */}
             <button
-              className="self-end mb-6 bg-gray-200 rounded p-1 text-gray-700 hover:bg-gray-300"
+              className="self-end mb-6 bg-orange-500 rounded p-3 text-white hover:bg-purple-500 transition"
               onClick={toggleMobile}
             >
               ✕
             </button>
 
+            {/* Mobile Links */}
             <ul className="flex flex-col gap-6 text-lg mt-10">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-blue-600 font-semibold"
+                    className="font-semibold hover:text-purple-900 transition"
                     onClick={toggleMobile}
                   >
                     {link.name}

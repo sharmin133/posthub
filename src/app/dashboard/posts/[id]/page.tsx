@@ -17,12 +17,16 @@ export default function PostDetails() {
   if (!post) return <p>Post not found</p>;
 
   return (
-    <div className="p-4 md:pt-28 max-w-4xl">
-      <h1 className="text-2xl font-bold mb-4 text-center">Post Details</h1>
-  <Card className="p-6 md:p-8 shadow-md rounded-lg">
-          <h2 className="text-xl font-semibold mb-3 text-center">{post.title}</h2>
-          <p className="text-gray-700 text-base md:text-lg text-center">{post.body}</p>
-        </Card>
+    <div className="pt-32 px-4 md:px-8 bg-white min-h-screen transition-colors duration-300">
+      
+      <h1 className="md:text-5xl text-3xl text-center font-bold md:mb-12 mb-6 text-purple-900">
+        Posts Details
+      </h1>
+  <Card title={post.title} className="p-6 md:p-8 shadow-md rounded-lg">
+  <p className="text-gray-700 text-base  text-center">
+    {post.body}
+  </p>
+</Card>
     </div>
   );
 }
