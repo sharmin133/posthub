@@ -6,6 +6,7 @@ import { useFetch } from "@/hooks/useFetch";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Post } from "@/types/posts";
+import { HiArrowRight } from "react-icons/hi";
 
 export default function PostsPage() {
   const { data: posts, loading, error } = useFetch<Post[]>(
@@ -21,7 +22,7 @@ export default function PostsPage() {
       <h1 className="md:text-5xl text-3xl text-center font-bold md:mb-12 mb-6 text-purple-900">
         All Posts
       </h1>
-     
+
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr">
         {posts.map((post, index) => (
@@ -33,27 +34,30 @@ export default function PostsPage() {
             className="h-full"
           >
             <Card className="p-6 md:p-8 shadow-md rounded-lg flex flex-col h-full">
-              {/* Title section - fixed height */}
+              {/* title */}
               <div className="h-16 flex items-center justify-center mb-4">
                 <h3 className="font-semibold text-xl text-purple-900 text-center line-clamp-2">
                   {post.title}
                 </h3>
               </div>
 
-              {/* Body section - fixed space */}
+              {/* body */}
               <div className="flex-1">
                 <p className="text-gray-700 text-base text-center line-clamp-3">
                   {post.body}
                 </p>
               </div>
 
-              {/* Button section - fixed position at bottom */}
+              {/* button */}
               <div className="h-12 flex items-center justify-center mt-4">
                 <Link
                   href={`/dashboard/posts/${post.id}`}
-                  className="inline-block text-white font-bold px-4 py-2 rounded-xl bg-amber-600"
+                  className="inline-flex items-center gap-2 text-white font-bold px-4 py-2 rounded-xl 
+      bg-gradient-to-r from-orange-500 to-orange-700
+      hover:from-orange-900 hover:to-orange-400 transition-all duration-300"
                 >
-                  Read more →
+                  Read more
+                  <HiArrowRight className="text-xl" />
                 </Link>
               </div>
             </Card>

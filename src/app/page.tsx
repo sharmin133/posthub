@@ -8,7 +8,7 @@ export default function Home() {
 
 
   return (
-    <div className="mt-20">
+    <div className="mt-16">
       <HeroSection></HeroSection>
       <ConnectAndCreate></ConnectAndCreate>
     </div>

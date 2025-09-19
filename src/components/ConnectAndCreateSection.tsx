@@ -2,16 +2,23 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ConnectAndCreate() {
   return (
     <div
       className="w-full flex flex-col md:flex-row items-center p-16 md:px-20
                  bg-gradient-to-r from-[#695181] to-[#7d5c3a] 
-               shadow-lg"
+                 shadow-lg"
     >
-      {/* Left: Image */}
-      <div className="w-full flex justify-center mb-6 md:mb-0">
+      {/* left image */}
+      <motion.div
+        initial={{ opacity: 0, x: -80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="w-full flex justify-center mb-6 md:mb-0"
+      >
         <Image
           src="https://i.ibb.co/JjMnWjxn/office-620817.jpg"
           alt="Connect & Create"
@@ -19,10 +26,16 @@ export default function ConnectAndCreate() {
           height={500}
           className="rounded-lg object-cover shadow-lg border-4 border-white"
         />
-      </div>
+      </motion.div>
 
-      {/* Right: Text */}
-      <div className="w-full flex flex-col justify-center text-center md:text-left">
+      {/* right text */}
+      <motion.div
+        initial={{ opacity: 0, x: 80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+        viewport={{ once: true }}
+        className="w-full flex flex-col justify-center text-center md:text-left"
+      >
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-md">
           Connect & Create
         </h1>
@@ -30,7 +43,7 @@ export default function ConnectAndCreate() {
           Access your account to see posts, create content, and manage your profile.
           Login now to continue.
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }

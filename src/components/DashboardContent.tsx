@@ -20,14 +20,15 @@ export default function DashboardContent() {
 
   return (
     <main className="pt-32 px-4 md:px-8 bg-white min-h-screen transition-colors duration-300">
-      {/* Page Title */}
+      {/* title */}
       <h1 className="md:text-5xl text-3xl text-center font-bold md:mb-12 mb-6 text-purple-900">
         Welcome to Dashboard
       </h1>
 
-      {/* Cards Container */}
+      {/* cards */}
       <div className="flex flex-col md:flex-row md:gap-6 gap-4">
-        {/* Stats Card */}
+
+        {/* stats card */}
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -42,7 +43,7 @@ export default function DashboardContent() {
           </p>
         </motion.div>
 
-        {/* Bar Chart */}
+        {/* bar chart */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

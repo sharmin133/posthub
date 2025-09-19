@@ -2,13 +2,13 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    // Footer Container with light orange background
+    // footer container 
     <footer className="bg-orange-500 text-white py-8">
       <div className="mx-auto flex flex-col items-center gap-4">
-        {/* Website Name */}
+       
         <h2 className="text-xl font-semibold">PostHub</h2>
 
-        {/* Social Media Icons */}
+        {/* icons */}
         <div className="flex gap-6 text-2xl">
           <a href="#" className="hover:text-orange-200"><FaFacebook /></a>
           <a href="#" className="hover:text-orange-200"><FaTwitter /></a>
@@ -16,7 +16,7 @@ export default function Footer() {
           <a href="#" className="hover:text-orange-200"><FaLinkedin /></a>
         </div>
 
-        {/* Copyright Text */}
+        {/* copyright text */}
         <p className="text-orange-100 text-sm mt-2">
           © {new Date().getFullYear()} PostHub. All rights reserved.
         </p>

@@ -19,13 +19,13 @@ export function useFetch<T>(url: string) {
 
         const result = await res.json();
         setData(result);
-     } catch (err) {
-  if (err instanceof Error) {
-    setError(err.message);
-  } else {
-    setError("An unknown error occurred");
-  }
-} finally {
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
+      } finally {
         setLoading(false);
       }
     }

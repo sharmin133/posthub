@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ title, children, className }) => {
       )}
 
       {/* Card content */}
-       <div className="flex-1">{children}</div>
+      <div className="flex-1">{children}</div>
     </div>
   );
 };
